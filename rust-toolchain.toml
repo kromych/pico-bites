@@ -1,0 +1,4 @@
+[toolchain]
+channel = "stable"
+components = ["rust-src", "rustc"]
+targets = ["thumbv6m-none-eabi"]

@@ -2,6 +2,8 @@
 
 ## How to build and run
 
+## Various small examples to start learning embedded development with Pi Pico
+
 ## Projects I have learned from
 
 * I heavliy cribbed/borrowed the RTIC and USB relatec code from
