@@ -4,7 +4,6 @@
 
 use core::fmt::Write;
 use fugit::RateExtU32;
-use rp2040_hal::clocks::Clock;
 
 use defmt_rtt as _;
 use panic_halt as _;
@@ -12,6 +11,8 @@ use panic_halt as _;
 use defmt as log;
 use rp2040_hal as hal;
 use rp_pico as bsp;
+
+use hal::clocks::Clock;
 
 #[bsp::entry]
 fn main() -> ! {
@@ -64,6 +65,6 @@ fn main() -> ! {
         writeln!(uart, "{count:02}\r").unwrap();
 
         delay.delay_ms(100);
-        count += 1
+        count = count.wrapping_add(1);
     }
 }

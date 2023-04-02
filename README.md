@@ -4,6 +4,10 @@
 
 ## Various small examples to start learning embedded development with Pi Pico
 
+```sh
+picocom -b 115200 -f n -d 8 -s 1 --imap lfcr /dev/tty.usbserial-TG11060e0 
+```
+
 ## Projects I have learned from
 
 * I heavliy cribbed/borrowed the RTIC and USB relatec code from
