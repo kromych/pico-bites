@@ -12,8 +12,9 @@ mod app {
     use crate::fmt::Wrapper;
     use core::fmt::Write;
     use embedded_hal::digital::v2::OutputPin;
-    use embedded_time::duration::Extensions;
 
+    use fugit::MicrosDurationU32;
+    use rp2040_hal::timer::Alarm;
     use rp_pico::hal;
     use rp_pico::pac;
     use rp_pico::XOSC_CRYSTAL_FREQ;
@@ -163,8 +164,8 @@ mod app {
 
         let mut timer = hal::Timer::new(c.device.TIMER, &mut resets);
         let mut alarm = timer.alarm_0().unwrap();
-        let _ = alarm.schedule(SCAN_TIME_US.microseconds());
-        alarm.enable_interrupt(&mut timer);
+        let _ = alarm.schedule(MicrosDurationU32::micros(SCAN_TIME_US));
+        alarm.enable_interrupt();
 
         // Enable led_blink.
         let led_blink_enable = true;
@@ -239,9 +240,9 @@ mod app {
         let mut timer = cx.shared.timer;
         let mut alarm = cx.shared.alarm;
         (alarm).lock(|a| {
-            (timer).lock(|timer_a| {
-                a.clear_interrupt(timer_a);
-                let _ = a.schedule(SCAN_TIME_US.microseconds());
+            (timer).lock(|_timer_a| {
+                a.clear_interrupt();
+                let _ = a.schedule(MicrosDurationU32::micros(SCAN_TIME_US));
             });
         });
 
