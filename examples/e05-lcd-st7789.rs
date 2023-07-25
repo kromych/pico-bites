@@ -15,6 +15,8 @@ use embedded_graphics_core::draw_target::DrawTarget;
 use embedded_graphics_core::pixelcolor::Rgb565;
 use embedded_graphics_core::prelude::Point;
 use embedded_graphics_core::prelude::RgbColor;
+use embedded_graphics_core::prelude::Size;
+use embedded_graphics_core::primitives::Rectangle;
 use embedded_graphics_core::Drawable;
 use fugit::RateExtU32;
 use hal::gpio;
@@ -55,7 +57,7 @@ fn main() -> ! {
         &mut pac.RESETS,
     );
 
-    let cs = pins
+    let _cs = pins
         .gpio17
         .into_push_pull_output_in_state(gpio::PinState::Low);
     let dc = pins.gpio22.into_push_pull_output();
@@ -72,56 +74,48 @@ fn main() -> ! {
 
     let spi = hal::spi::Spi::<_, _, 8>::new(pac.SPI0);
 
-    // let build_jmd_ips130_v20_no_cs = || {
-    //     mipidsi::Builder::with_model(
-    //         display_interface_spi::SPIInterfaceNoCS::new(
-    //             spi.init(
-    //                 &mut pac.RESETS,
-    //                 clocks.peripheral_clock.freq(),
-    //                 62u32.MHz(),
-    //                 &embedded_hal::spi::MODE_3,
-    //             ),
-    //             dc,
-    //         ),
-    //         ST7789,
-    //     )
-    //     .with_color_order(mipidsi::ColorOrder::Rgb)
-    //     .with_invert_colors(ColorInversion::Inverted)
-    //     .with_orientation(Orientation::Portrait(false))
-    //     .with_display_size(240, 240)
-    // };
-
-    let build_waveshare_320x240 = || {
-        mipidsi::Builder::with_model(
-            display_interface_spi::SPIInterface::new(
-                spi.init(
-                    &mut pac.RESETS,
-                    clocks.peripheral_clock.freq(),
-                    62u32.MHz(),
-                    &embedded_hal::spi::MODE_3,
-                ),
-                dc,
-                cs,
+    let mut display = mipidsi::Builder::with_model(
+        display_interface_spi::SPIInterfaceNoCS::new(
+            spi.init(
+                &mut pac.RESETS,
+                clocks.peripheral_clock.freq(),
+                62u32.MHz(),
+                &embedded_hal::spi::MODE_3,
             ),
-            ST7789,
-        )
-        .with_color_order(mipidsi::ColorOrder::Rgb)
-        .with_invert_colors(ColorInversion::Inverted)
-        .with_orientation(Orientation::Portrait(false))
-        .with_display_size(320, 240)
-    };
+            dc,
+        ),
+        ST7789,
+    )
+    .with_color_order(mipidsi::ColorOrder::Rgb)
+    .with_invert_colors(ColorInversion::Inverted)
+    .with_orientation(Orientation::Portrait(false))
+    .with_display_size(240, 320)
+    .with_framebuffer_size(240, 320)
+    .init(&mut delay, Some(reset))
+    .unwrap();
 
-    let mut display = build_waveshare_320x240()
-        .init(&mut delay, Some(reset))
-        .unwrap();
-
-    display.clear(Rgb565::MAGENTA).unwrap();
+    let bg_color = Rgb565::new(4, 0, 4);
+    display.clear(bg_color).unwrap();
 
     let style = MonoTextStyle::new(&FONT_10X20, Rgb565::YELLOW);
+    let text = "Hello, world!";
+    let len = text.len() as u32;
+    let mut text_bg_top_left = Point::new(2, 2);
+    let mut text_top_left = Point::new(2, 22);
+    let size = Size::new(len * 10, 22);
+    for _ in 1..300 {
+        Text::new(text, text_top_left, style)
+            .draw(&mut display)
+            .unwrap();
+        cortex_m::asm::delay(610_000);
 
-    Text::new("Hello, world!", Point::new(2, 28), style)
-        .draw(&mut display)
-        .unwrap();
+        display
+            .fill_solid(&Rectangle::new(text_bg_top_left, size), bg_color)
+            .unwrap();
+
+        text_bg_top_left.y += 1;
+        text_top_left.y += 1;
+    }
 
     loop {
         cortex_m::asm::wfe();
