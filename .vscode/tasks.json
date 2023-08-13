@@ -1,0 +1,401 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build example e05-lcd-st7789",
+            "type": "shell",
+            "command": "arm-none-eabi-objcopy",
+            "args": [
+                "--output-target",
+                "binary",
+                "./target/thumbv6m-none-eabi/debug/examples/e05-lcd-st7789",
+                "./target/thumbv6m-none-eabi/debug/examples/e05-lcd-st7789.bin"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "cargo build --example e05-lcd-st7789"
+        },
+        {
+            "label": "cargo build --example e05-lcd-st7789",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--example",
+                "e05-lcd-st7789"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build example e04-usb-cdc-rtic",
+            "type": "shell",
+            "command": "arm-none-eabi-objcopy",
+            "args": [
+                "--output-target",
+                "binary",
+                "./target/thumbv6m-none-eabi/debug/examples/e04-usb-cdc-rtic",
+                "./target/thumbv6m-none-eabi/debug/examples/e04-usb-cdc-rtic.bin"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "cargo build --example e04-usb-cdc-rtic"
+        },
+        {
+            "label": "cargo build --example e04-usb-cdc-rtic",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--example",
+                "e04-usb-cdc-rtic"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build example e02-uart-tx-rtic",
+            "type": "shell",
+            "command": "arm-none-eabi-objcopy",
+            "args": [
+                "--output-target",
+                "binary",
+                "./target/thumbv6m-none-eabi/debug/examples/e02-uart-tx-rtic",
+                "./target/thumbv6m-none-eabi/debug/examples/e02-uart-tx-rtic.bin"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "cargo build --example e02-uart-tx-rtic"
+        },
+        {
+            "label": "cargo build --example e02-uart-tx-rtic",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--example",
+                "e02-uart-tx-rtic"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build example e04-usb-cdc",
+            "type": "shell",
+            "command": "arm-none-eabi-objcopy",
+            "args": [
+                "--output-target",
+                "binary",
+                "./target/thumbv6m-none-eabi/debug/examples/e04-usb-cdc",
+                "./target/thumbv6m-none-eabi/debug/examples/e04-usb-cdc.bin"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "cargo build --example e04-usb-cdc"
+        },
+        {
+            "label": "cargo build --example e04-usb-cdc",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--example",
+                "e04-usb-cdc"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build example e03-uart-tx-rx-int-rtic",
+            "type": "shell",
+            "command": "arm-none-eabi-objcopy",
+            "args": [
+                "--output-target",
+                "binary",
+                "./target/thumbv6m-none-eabi/debug/examples/e03-uart-tx-rx-int-rtic",
+                "./target/thumbv6m-none-eabi/debug/examples/e03-uart-tx-rx-int-rtic.bin"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "cargo build --example e03-uart-tx-rx-int-rtic"
+        },
+        {
+            "label": "cargo build --example e03-uart-tx-rx-int-rtic",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--example",
+                "e03-uart-tx-rx-int-rtic"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build example e02-uart-tx",
+            "type": "shell",
+            "command": "arm-none-eabi-objcopy",
+            "args": [
+                "--output-target",
+                "binary",
+                "./target/thumbv6m-none-eabi/debug/examples/e02-uart-tx",
+                "./target/thumbv6m-none-eabi/debug/examples/e02-uart-tx.bin"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "cargo build --example e02-uart-tx"
+        },
+        {
+            "label": "cargo build --example e02-uart-tx",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--example",
+                "e02-uart-tx"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build example e00-alive",
+            "type": "shell",
+            "command": "arm-none-eabi-objcopy",
+            "args": [
+                "--output-target",
+                "binary",
+                "./target/thumbv6m-none-eabi/debug/examples/e00-alive",
+                "./target/thumbv6m-none-eabi/debug/examples/e00-alive.bin"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "cargo build --example e00-alive"
+        },
+        {
+            "label": "cargo build --example e00-alive",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--example",
+                "e00-alive"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build example e00-alive-rtic",
+            "type": "shell",
+            "command": "arm-none-eabi-objcopy",
+            "args": [
+                "--output-target",
+                "binary",
+                "./target/thumbv6m-none-eabi/debug/examples/e00-alive-rtic",
+                "./target/thumbv6m-none-eabi/debug/examples/e00-alive-rtic.bin"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "cargo build --example e00-alive-rtic"
+        },
+        {
+            "label": "cargo build --example e00-alive-rtic",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--example",
+                "e00-alive-rtic"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build example e01-blink",
+            "type": "shell",
+            "command": "arm-none-eabi-objcopy",
+            "args": [
+                "--output-target",
+                "binary",
+                "./target/thumbv6m-none-eabi/debug/examples/e01-blink",
+                "./target/thumbv6m-none-eabi/debug/examples/e01-blink.bin"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "cargo build --example e01-blink"
+        },
+        {
+            "label": "cargo build --example e01-blink",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--example",
+                "e01-blink"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build example e06-ws2812b",
+            "type": "shell",
+            "command": "arm-none-eabi-objcopy",
+            "args": [
+                "--output-target",
+                "binary",
+                "./target/thumbv6m-none-eabi/debug/examples/e06-ws2812b",
+                "./target/thumbv6m-none-eabi/debug/examples/e06-ws2812b.bin"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "cargo build --example e06-ws2812b"
+        },
+        {
+            "label": "cargo build --example e06-ws2812b",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--example",
+                "e06-ws2812b"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build example e03-uart-tx-rx-int",
+            "type": "shell",
+            "command": "arm-none-eabi-objcopy",
+            "args": [
+                "--output-target",
+                "binary",
+                "./target/thumbv6m-none-eabi/debug/examples/e03-uart-tx-rx-int",
+                "./target/thumbv6m-none-eabi/debug/examples/e03-uart-tx-rx-int.bin"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "cargo build --example e03-uart-tx-rx-int"
+        },
+        {
+            "label": "cargo build --example e03-uart-tx-rx-int",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--example",
+                "e03-uart-tx-rx-int"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build example e01-blink-rtic",
+            "type": "shell",
+            "command": "arm-none-eabi-objcopy",
+            "args": [
+                "--output-target",
+                "binary",
+                "./target/thumbv6m-none-eabi/debug/examples/e01-blink-rtic",
+                "./target/thumbv6m-none-eabi/debug/examples/e01-blink-rtic.bin"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "cargo build --example e01-blink-rtic"
+        },
+        {
+            "label": "cargo build --example e01-blink-rtic",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--example",
+                "e01-blink-rtic"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
+        }
+    ]
+}

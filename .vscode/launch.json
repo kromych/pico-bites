@@ -1,0 +1,1145 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "preLaunchTask": "cargo build --example e05-lcd-st7789",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs-debug e05-lcd-st7789",
+            "cwd": "${workspaceFolder}",
+            "chip": "rp2040",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeArgs": [
+                "debug"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv6m-none-eabi/debug/examples/e05-lcd-st7789",
+                    "chip": "RP2040",
+                    "svdFile": "${workspaceFolder}/.vscode/rp2040.svd",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "debug"
+                        }
+                    }
+                }
+            ],
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        },
+        {
+            "preLaunchTask": "cargo build --example e05-lcd-st7789",
+            "name": "Cortex Debug CMSIS-DAP e05-lcd-st7789",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e05-lcd-st7789",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "arm-none-eabi-gdb",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "monitor arm semihosting_fileio enable"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },
+        {
+            "preLaunchTask": "build example e05-lcd-st7789",
+            "name": "External OpenOCD e05-lcd-st7789",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e05-lcd-st7789",
+            "servertype": "external",
+            "gdbPath": "arm-none-eabi-gdb",
+            "gdbTarget": "localhost:3333",
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "target extended-remote :3333",
+                "set print asm-demangle on",
+                "set backtrace limit 32",
+                "break main"
+            ],
+            "postRestartCommands": [
+                "break DefaultHandler",
+                "break HardFault",
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "preLaunchTask": "cargo build --example e04-usb-cdc-rtic",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs-debug e04-usb-cdc-rtic",
+            "cwd": "${workspaceFolder}",
+            "chip": "rp2040",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeArgs": [
+                "debug"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv6m-none-eabi/debug/examples/e04-usb-cdc-rtic",
+                    "chip": "RP2040",
+                    "svdFile": "${workspaceFolder}/.vscode/rp2040.svd",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "debug"
+                        }
+                    }
+                }
+            ],
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        },
+        {
+            "preLaunchTask": "cargo build --example e04-usb-cdc-rtic",
+            "name": "Cortex Debug CMSIS-DAP e04-usb-cdc-rtic",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e04-usb-cdc-rtic",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "arm-none-eabi-gdb",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "monitor arm semihosting_fileio enable"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },
+        {
+            "preLaunchTask": "build example e04-usb-cdc-rtic",
+            "name": "External OpenOCD e04-usb-cdc-rtic",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e04-usb-cdc-rtic",
+            "servertype": "external",
+            "gdbPath": "arm-none-eabi-gdb",
+            "gdbTarget": "localhost:3333",
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "target extended-remote :3333",
+                "set print asm-demangle on",
+                "set backtrace limit 32",
+                "break main"
+            ],
+            "postRestartCommands": [
+                "break DefaultHandler",
+                "break HardFault",
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "preLaunchTask": "cargo build --example e02-uart-tx-rtic",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs-debug e02-uart-tx-rtic",
+            "cwd": "${workspaceFolder}",
+            "chip": "rp2040",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeArgs": [
+                "debug"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv6m-none-eabi/debug/examples/e02-uart-tx-rtic",
+                    "chip": "RP2040",
+                    "svdFile": "${workspaceFolder}/.vscode/rp2040.svd",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "debug"
+                        }
+                    }
+                }
+            ],
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        },
+        {
+            "preLaunchTask": "cargo build --example e02-uart-tx-rtic",
+            "name": "Cortex Debug CMSIS-DAP e02-uart-tx-rtic",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e02-uart-tx-rtic",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "arm-none-eabi-gdb",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "monitor arm semihosting_fileio enable"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },
+        {
+            "preLaunchTask": "build example e02-uart-tx-rtic",
+            "name": "External OpenOCD e02-uart-tx-rtic",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e02-uart-tx-rtic",
+            "servertype": "external",
+            "gdbPath": "arm-none-eabi-gdb",
+            "gdbTarget": "localhost:3333",
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "target extended-remote :3333",
+                "set print asm-demangle on",
+                "set backtrace limit 32",
+                "break main"
+            ],
+            "postRestartCommands": [
+                "break DefaultHandler",
+                "break HardFault",
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "preLaunchTask": "cargo build --example e04-usb-cdc",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs-debug e04-usb-cdc",
+            "cwd": "${workspaceFolder}",
+            "chip": "rp2040",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeArgs": [
+                "debug"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv6m-none-eabi/debug/examples/e04-usb-cdc",
+                    "chip": "RP2040",
+                    "svdFile": "${workspaceFolder}/.vscode/rp2040.svd",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "debug"
+                        }
+                    }
+                }
+            ],
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        },
+        {
+            "preLaunchTask": "cargo build --example e04-usb-cdc",
+            "name": "Cortex Debug CMSIS-DAP e04-usb-cdc",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e04-usb-cdc",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "arm-none-eabi-gdb",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "monitor arm semihosting_fileio enable"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },
+        {
+            "preLaunchTask": "build example e04-usb-cdc",
+            "name": "External OpenOCD e04-usb-cdc",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e04-usb-cdc",
+            "servertype": "external",
+            "gdbPath": "arm-none-eabi-gdb",
+            "gdbTarget": "localhost:3333",
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "target extended-remote :3333",
+                "set print asm-demangle on",
+                "set backtrace limit 32",
+                "break main"
+            ],
+            "postRestartCommands": [
+                "break DefaultHandler",
+                "break HardFault",
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "preLaunchTask": "cargo build --example e03-uart-tx-rx-int-rtic",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs-debug e03-uart-tx-rx-int-rtic",
+            "cwd": "${workspaceFolder}",
+            "chip": "rp2040",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeArgs": [
+                "debug"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv6m-none-eabi/debug/examples/e03-uart-tx-rx-int-rtic",
+                    "chip": "RP2040",
+                    "svdFile": "${workspaceFolder}/.vscode/rp2040.svd",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "debug"
+                        }
+                    }
+                }
+            ],
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        },
+        {
+            "preLaunchTask": "cargo build --example e03-uart-tx-rx-int-rtic",
+            "name": "Cortex Debug CMSIS-DAP e03-uart-tx-rx-int-rtic",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e03-uart-tx-rx-int-rtic",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "arm-none-eabi-gdb",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "monitor arm semihosting_fileio enable"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },
+        {
+            "preLaunchTask": "build example e03-uart-tx-rx-int-rtic",
+            "name": "External OpenOCD e03-uart-tx-rx-int-rtic",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e03-uart-tx-rx-int-rtic",
+            "servertype": "external",
+            "gdbPath": "arm-none-eabi-gdb",
+            "gdbTarget": "localhost:3333",
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "target extended-remote :3333",
+                "set print asm-demangle on",
+                "set backtrace limit 32",
+                "break main"
+            ],
+            "postRestartCommands": [
+                "break DefaultHandler",
+                "break HardFault",
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "preLaunchTask": "cargo build --example e02-uart-tx",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs-debug e02-uart-tx",
+            "cwd": "${workspaceFolder}",
+            "chip": "rp2040",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeArgs": [
+                "debug"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv6m-none-eabi/debug/examples/e02-uart-tx",
+                    "chip": "RP2040",
+                    "svdFile": "${workspaceFolder}/.vscode/rp2040.svd",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "debug"
+                        }
+                    }
+                }
+            ],
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        },
+        {
+            "preLaunchTask": "cargo build --example e02-uart-tx",
+            "name": "Cortex Debug CMSIS-DAP e02-uart-tx",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e02-uart-tx",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "arm-none-eabi-gdb",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "monitor arm semihosting_fileio enable"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },
+        {
+            "preLaunchTask": "build example e02-uart-tx",
+            "name": "External OpenOCD e02-uart-tx",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e02-uart-tx",
+            "servertype": "external",
+            "gdbPath": "arm-none-eabi-gdb",
+            "gdbTarget": "localhost:3333",
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "target extended-remote :3333",
+                "set print asm-demangle on",
+                "set backtrace limit 32",
+                "break main"
+            ],
+            "postRestartCommands": [
+                "break DefaultHandler",
+                "break HardFault",
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "preLaunchTask": "cargo build --example e00-alive",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs-debug e00-alive",
+            "cwd": "${workspaceFolder}",
+            "chip": "rp2040",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeArgs": [
+                "debug"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv6m-none-eabi/debug/examples/e00-alive",
+                    "chip": "RP2040",
+                    "svdFile": "${workspaceFolder}/.vscode/rp2040.svd",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "debug"
+                        }
+                    }
+                }
+            ],
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        },
+        {
+            "preLaunchTask": "cargo build --example e00-alive",
+            "name": "Cortex Debug CMSIS-DAP e00-alive",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e00-alive",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "arm-none-eabi-gdb",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "monitor arm semihosting_fileio enable"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },
+        {
+            "preLaunchTask": "build example e00-alive",
+            "name": "External OpenOCD e00-alive",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e00-alive",
+            "servertype": "external",
+            "gdbPath": "arm-none-eabi-gdb",
+            "gdbTarget": "localhost:3333",
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "target extended-remote :3333",
+                "set print asm-demangle on",
+                "set backtrace limit 32",
+                "break main"
+            ],
+            "postRestartCommands": [
+                "break DefaultHandler",
+                "break HardFault",
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "preLaunchTask": "cargo build --example e00-alive-rtic",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs-debug e00-alive-rtic",
+            "cwd": "${workspaceFolder}",
+            "chip": "rp2040",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeArgs": [
+                "debug"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv6m-none-eabi/debug/examples/e00-alive-rtic",
+                    "chip": "RP2040",
+                    "svdFile": "${workspaceFolder}/.vscode/rp2040.svd",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "debug"
+                        }
+                    }
+                }
+            ],
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        },
+        {
+            "preLaunchTask": "cargo build --example e00-alive-rtic",
+            "name": "Cortex Debug CMSIS-DAP e00-alive-rtic",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e00-alive-rtic",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "arm-none-eabi-gdb",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "monitor arm semihosting_fileio enable"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },
+        {
+            "preLaunchTask": "build example e00-alive-rtic",
+            "name": "External OpenOCD e00-alive-rtic",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e00-alive-rtic",
+            "servertype": "external",
+            "gdbPath": "arm-none-eabi-gdb",
+            "gdbTarget": "localhost:3333",
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "target extended-remote :3333",
+                "set print asm-demangle on",
+                "set backtrace limit 32",
+                "break main"
+            ],
+            "postRestartCommands": [
+                "break DefaultHandler",
+                "break HardFault",
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "preLaunchTask": "cargo build --example e01-blink",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs-debug e01-blink",
+            "cwd": "${workspaceFolder}",
+            "chip": "rp2040",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeArgs": [
+                "debug"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv6m-none-eabi/debug/examples/e01-blink",
+                    "chip": "RP2040",
+                    "svdFile": "${workspaceFolder}/.vscode/rp2040.svd",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "debug"
+                        }
+                    }
+                }
+            ],
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        },
+        {
+            "preLaunchTask": "cargo build --example e01-blink",
+            "name": "Cortex Debug CMSIS-DAP e01-blink",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e01-blink",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "arm-none-eabi-gdb",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "monitor arm semihosting_fileio enable"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },
+        {
+            "preLaunchTask": "build example e01-blink",
+            "name": "External OpenOCD e01-blink",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e01-blink",
+            "servertype": "external",
+            "gdbPath": "arm-none-eabi-gdb",
+            "gdbTarget": "localhost:3333",
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "target extended-remote :3333",
+                "set print asm-demangle on",
+                "set backtrace limit 32",
+                "break main"
+            ],
+            "postRestartCommands": [
+                "break DefaultHandler",
+                "break HardFault",
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "preLaunchTask": "cargo build --example e06-ws2812b",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs-debug e06-ws2812b",
+            "cwd": "${workspaceFolder}",
+            "chip": "rp2040",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeArgs": [
+                "debug"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv6m-none-eabi/debug/examples/e06-ws2812b",
+                    "chip": "RP2040",
+                    "svdFile": "${workspaceFolder}/.vscode/rp2040.svd",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "debug"
+                        }
+                    }
+                }
+            ],
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        },
+        {
+            "preLaunchTask": "cargo build --example e06-ws2812b",
+            "name": "Cortex Debug CMSIS-DAP e06-ws2812b",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e06-ws2812b",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "arm-none-eabi-gdb",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "monitor arm semihosting_fileio enable"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },
+        {
+            "preLaunchTask": "build example e06-ws2812b",
+            "name": "External OpenOCD e06-ws2812b",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e06-ws2812b",
+            "servertype": "external",
+            "gdbPath": "arm-none-eabi-gdb",
+            "gdbTarget": "localhost:3333",
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "target extended-remote :3333",
+                "set print asm-demangle on",
+                "set backtrace limit 32",
+                "break main"
+            ],
+            "postRestartCommands": [
+                "break DefaultHandler",
+                "break HardFault",
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "preLaunchTask": "cargo build --example e03-uart-tx-rx-int",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs-debug e03-uart-tx-rx-int",
+            "cwd": "${workspaceFolder}",
+            "chip": "rp2040",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeArgs": [
+                "debug"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv6m-none-eabi/debug/examples/e03-uart-tx-rx-int",
+                    "chip": "RP2040",
+                    "svdFile": "${workspaceFolder}/.vscode/rp2040.svd",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "debug"
+                        }
+                    }
+                }
+            ],
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        },
+        {
+            "preLaunchTask": "cargo build --example e03-uart-tx-rx-int",
+            "name": "Cortex Debug CMSIS-DAP e03-uart-tx-rx-int",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e03-uart-tx-rx-int",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "arm-none-eabi-gdb",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "monitor arm semihosting_fileio enable"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },
+        {
+            "preLaunchTask": "build example e03-uart-tx-rx-int",
+            "name": "External OpenOCD e03-uart-tx-rx-int",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e03-uart-tx-rx-int",
+            "servertype": "external",
+            "gdbPath": "arm-none-eabi-gdb",
+            "gdbTarget": "localhost:3333",
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "target extended-remote :3333",
+                "set print asm-demangle on",
+                "set backtrace limit 32",
+                "break main"
+            ],
+            "postRestartCommands": [
+                "break DefaultHandler",
+                "break HardFault",
+                "break main",
+                "continue"
+            ]
+        },
+        {
+            "preLaunchTask": "cargo build --example e01-blink-rtic",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs-debug e01-blink-rtic",
+            "cwd": "${workspaceFolder}",
+            "chip": "rp2040",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs-debugger",
+            "runtimeArgs": [
+                "debug"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv6m-none-eabi/debug/examples/e01-blink-rtic",
+                    "chip": "RP2040",
+                    "svdFile": "${workspaceFolder}/.vscode/rp2040.svd",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "debug"
+                        }
+                    }
+                }
+            ],
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        },
+        {
+            "preLaunchTask": "cargo build --example e01-blink-rtic",
+            "name": "Cortex Debug CMSIS-DAP e01-blink-rtic",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e01-blink-rtic",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "gdbPath": "arm-none-eabi-gdb",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "monitor arm semihosting_fileio enable"
+            ],
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "openOCDLaunchCommands": [
+                "adapter speed 5000"
+            ]
+        },
+        {
+            "preLaunchTask": "build example e01-blink-rtic",
+            "name": "External OpenOCD e01-blink-rtic",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/target/thumbv6m-none-eabi/debug/examples/e01-blink-rtic",
+            "servertype": "external",
+            "gdbPath": "arm-none-eabi-gdb",
+            "gdbTarget": "localhost:3333",
+            "svdFile": "${workspaceRoot}/.vscode/rp2040.svd",
+            "runToEntryPoint": "main",
+            "preLaunchCommands": [
+                "monitor init",
+                "monitor reset init",
+                "monitor halt",
+                "monitor arm semihosting enable",
+                "target extended-remote :3333",
+                "set print asm-demangle on",
+                "set backtrace limit 32",
+                "break main"
+            ],
+            "postRestartCommands": [
+                "break DefaultHandler",
+                "break HardFault",
+                "break main",
+                "continue"
+            ]
+        }
+    ]
+}
