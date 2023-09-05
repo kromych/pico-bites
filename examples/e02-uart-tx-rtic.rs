@@ -13,13 +13,13 @@ mod app {
     use rp2040_hal as hal;
     use rp_pico as bsp;
 
-    use hal::gpio::Function;
     use hal::gpio::Pin;
-    use hal::gpio::Uart;
     use hal::uart::UartPeripheral;
     use hal::Clock;
 
     use fugit::RateExtU32;
+    use hal::gpio::FunctionUart;
+    use hal::gpio::PullDown;
 
     #[shared]
     struct Shared {}
@@ -30,8 +30,8 @@ mod app {
             hal::uart::Enabled,
             bsp::pac::UART1,
             (
-                Pin<hal::gpio::pin::bank0::Gpio8, Function<Uart>>,
-                Pin<hal::gpio::pin::bank0::Gpio9, Function<Uart>>,
+                Pin<hal::gpio::bank0::Gpio8, FunctionUart, PullDown>,
+                Pin<hal::gpio::bank0::Gpio9, FunctionUart, PullDown>,
             ),
         >,
         delay: cortex_m::delay::Delay,
@@ -68,8 +68,8 @@ mod app {
         );
 
         let uart_pins = (
-            pins.gpio8.into_mode::<hal::gpio::FunctionUart>(),
-            pins.gpio9.into_mode::<hal::gpio::FunctionUart>(),
+            pins.gpio8.into_function::<hal::gpio::FunctionUart>(),
+            pins.gpio9.into_function::<hal::gpio::FunctionUart>(),
         );
         let uart = hal::uart::UartPeripheral::new(pac.UART1, uart_pins, &mut pac.RESETS)
             .enable(

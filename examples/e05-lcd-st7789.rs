@@ -68,11 +68,11 @@ fn main() -> ! {
         .gpio20
         .into_push_pull_output_in_state(gpio::PinState::High);
 
-    let _mosi = pins.gpio19.into_mode::<FunctionSpi>();
-    let _miso = pins.gpio16.into_mode::<FunctionSpi>();
-    let _clk = pins.gpio18.into_mode::<FunctionSpi>();
+    let mosi = pins.gpio19.into_function::<FunctionSpi>();
+    let miso = pins.gpio16.into_function::<FunctionSpi>();
+    let sclk = pins.gpio18.into_function::<FunctionSpi>();
 
-    let spi = hal::spi::Spi::<_, _, 8>::new(pac.SPI0);
+    let spi = hal::spi::Spi::<_, _, _, 8>::new(pac.SPI0, (mosi, miso, sclk));
 
     let mut display = mipidsi::Builder::with_model(
         display_interface_spi::SPIInterfaceNoCS::new(

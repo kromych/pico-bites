@@ -16,6 +16,9 @@ mod app {
     use rp_pico as bsp;
 
     use embedded_hal::digital::v2::ToggleableOutputPin;
+    use hal::gpio::FunctionSio;
+    use hal::gpio::PullDown;
+    use hal::gpio::SioOutput;
     use hal::Clock;
 
     #[shared]
@@ -23,7 +26,7 @@ mod app {
 
     #[local]
     struct Local {
-        led_pin: hal::gpio::Pin<hal::gpio::pin::bank0::Gpio25, hal::gpio::PushPullOutput>,
+        led_pin: hal::gpio::Pin<hal::gpio::bank0::Gpio25, FunctionSio<SioOutput>, PullDown>,
         delay: cortex_m::delay::Delay,
         led_on: bool,
     }

@@ -145,9 +145,9 @@ dependencies = [
 
 [[package]]
 name = "critical-section"
-version = "1.1.1"
+version = "1.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6548a0ad5d2549e111e1f6a11a6c2e2d00ce6a3dafe22948d67c2b443f775e52"
+checksum = "7059fff8937831a9ae6f0fe4d658ffabf58f2ca96aa9dec1c889f936f705f216"
 
 [[package]]
 name = "debug-helper"
@@ -175,7 +175,7 @@ dependencies = [
  "proc-macro-error",
  "proc-macro2",
  "quote",
- "syn 2.0.26",
+ "syn 2.0.31",
 ]
 
 [[package]]
@@ -216,9 +216,9 @@ dependencies = [
 
 [[package]]
 name = "either"
-version = "1.8.1"
+version = "1.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7fcaabb2fef8c910e7f4c7ce9f67a1283a1715879a7c230ca9d6d1ae31f16d91"
+checksum = "a26ae43d7bcc3b814de94796a5e736d4029efb0ee900c12e2d54c993ad1a1e07"
 
 [[package]]
 name = "embedded-dma"
@@ -231,9 +231,9 @@ dependencies = [
 
 [[package]]
 name = "embedded-graphics"
-version = "0.8.0"
+version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cd2a8e0250a7e1212828166b01eed0219e488ebb2599f44624a29c9bd249f397"
+checksum = "0649998afacf6d575d126d83e68b78c0ab0e00ca2ac7e9b3db11b4cbe8274ef0"
 dependencies = [
  "az",
  "byteorder",
@@ -278,6 +278,45 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "98de4bbd547a563b716d8dfa9aad1cb19bfab00f4fa09a6a4ed21dbcf44ce9c4"
 dependencies = [
  "num-traits",
+]
+
+[[package]]
+name = "frunk"
+version = "0.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "11a351b59e12f97b4176ee78497dff72e4276fb1ceb13e19056aca7fa0206287"
+dependencies = [
+ "frunk_core",
+ "frunk_derives",
+]
+
+[[package]]
+name = "frunk_core"
+version = "0.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "af2469fab0bd07e64ccf0ad57a1438f63160c69b2e57f04a439653d68eb558d6"
+
+[[package]]
+name = "frunk_derives"
+version = "0.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b0fa992f1656e1707946bbba340ad244f0814009ef8c0118eb7b658395f19a2e"
+dependencies = [
+ "frunk_proc_macro_helpers",
+ "quote",
+ "syn 2.0.31",
+]
+
+[[package]]
+name = "frunk_proc_macro_helpers"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "35b54add839292b743aeda6ebedbd8b11e93404f902c56223e51b9ec18a13d2c"
+dependencies = [
+ "frunk_core",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.31",
 ]
 
 [[package]]
@@ -442,9 +481,9 @@ dependencies = [
 
 [[package]]
 name = "num-traits"
-version = "0.2.15"
+version = "0.2.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "578ede34cf02f8924ab9447f50c28075b4d3e5b269972345e7e0372b38c6cdcd"
+checksum = "f30b0abd723be7e2ffca1272140fac1a2f084c77ec3e123c192b66af1ee9e6c2"
 dependencies = [
  "autocfg",
 ]
@@ -487,9 +526,9 @@ dependencies = [
 
 [[package]]
 name = "paste"
-version = "1.0.13"
+version = "1.0.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b4b27ab7be369122c218afc2079489cdcb4b517c0a3fc386ff11e1fedfcc2b35"
+checksum = "de3145af08024dea9fa9914f381a17b8fc6034dfb00f3a84013f7ff43f29ed4c"
 
 [[package]]
 name = "pico-bites"
@@ -506,6 +545,7 @@ dependencies = [
  "embedded-hal",
  "embedded-time",
  "fugit",
+ "heapless",
  "mipidsi",
  "nb 1.1.0",
  "panic-halt",
@@ -556,18 +596,18 @@ dependencies = [
 
 [[package]]
 name = "proc-macro2"
-version = "1.0.65"
+version = "1.0.66"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "92de25114670a878b1261c79c9f8f729fb97e95bac93f6312f583c60dd6a1dfe"
+checksum = "18fb31db3f9bddb2ea821cde30a9f70117e3f119938b5ee630b7403aa6e2ead9"
 dependencies = [
  "unicode-ident",
 ]
 
 [[package]]
 name = "quote"
-version = "1.0.30"
+version = "1.0.33"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5907a1b7c277254a8b15170f6e7c97cfa60ee7872a3217663bb81151e48184bb"
+checksum = "5267fca4496028628a95160fc423a33e8b2e6af8a5302579e322e4b520293cae"
 dependencies = [
  "proc-macro2",
 ]
@@ -589,11 +629,10 @@ dependencies = [
 
 [[package]]
 name = "rp-pico"
-version = "0.7.0"
+version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "aab28f6f4e19cec2d61b64cdd685e69794b81c579fd3b765579c46018fe616d0"
+checksum = "6341771e6f8e5d130b2b3cbc23435b7847761adf198af09f4b2a60407d43bd56"
 dependencies = [
- "cortex-m",
  "cortex-m-rt",
  "fugit",
  "rp2040-boot2",
@@ -603,23 +642,24 @@ dependencies = [
 
 [[package]]
 name = "rp2040-boot2"
-version = "0.2.1"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3c773ec49b836077aa144b58dc7654a243e1eecdb6cf0d25361ae7c7600fabd8"
+checksum = "7c92f344f63f950ee36cf4080050e4dce850839b9175da38f9d2ffb69b4dbb21"
 dependencies = [
  "crc-any",
 ]
 
 [[package]]
 name = "rp2040-hal"
-version = "0.8.2"
+version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1369bb84862d7f69391a96606b2f29a00bfce7f29a749e23d5f01fc3f607ada0"
+checksum = "6ec610f738b69100fbe75f3b835501b669d41c889ac9a62ef284f8e6d1f17385"
 dependencies = [
  "cortex-m",
  "critical-section",
  "embedded-dma",
  "embedded-hal",
+ "frunk",
  "fugit",
  "itertools",
  "nb 1.1.0",
@@ -647,12 +687,13 @@ dependencies = [
 
 [[package]]
 name = "rp2040-pac"
-version = "0.4.0"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9192cafbb40d717c9e0ddf767aaf9c69fee1b4e48d22ed853b57b11f6d9f3d7e"
+checksum = "12d9d8375815f543f54835d01160d4e47f9e2cae75f17ff8f1ec19ce1da96e4c"
 dependencies = [
  "cortex-m",
  "cortex-m-rt",
+ "critical-section",
  "vcell",
 ]
 
@@ -695,14 +736,14 @@ version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bfa0f585226d2e68097d4f95d113b15b83a82e819ab25717ec0590d9584ef366"
 dependencies = [
- "semver 1.0.17",
+ "semver 1.0.18",
 ]
 
 [[package]]
 name = "scopeguard"
-version = "1.1.0"
+version = "1.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d29ab0c6d3fc0ee92fe66e2d99f700eab17a8d57d1c1d3b748380fb20baa78cd"
+checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
 
 [[package]]
 name = "semver"
@@ -715,9 +756,9 @@ dependencies = [
 
 [[package]]
 name = "semver"
-version = "1.0.17"
+version = "1.0.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bebd363326d05ec3e2f532ab7660680f3b02130d780c299bca73469d521bc0ed"
+checksum = "b0293b4b29daaf487284529cc2f5675b8e57c61f70167ba415a463651fd6a918"
 
 [[package]]
 name = "semver-parser"
@@ -771,9 +812,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "2.0.26"
+version = "2.0.31"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "45c3457aacde3c65315de5031ec191ce46604304d2446e803d71ade03308d970"
+checksum = "718fa2415bcb8d8bd775917a1bf12a7931b6dfa890753378538118181e0cb398"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -782,22 +823,22 @@ dependencies = [
 
 [[package]]
 name = "thiserror"
-version = "1.0.43"
+version = "1.0.48"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a35fc5b8971143ca348fa6df4f024d4d55264f3468c71ad1c2f365b0a4d58c42"
+checksum = "9d6d7a740b8a666a7e828dd00da9c0dc290dff53154ea77ac109281de90589b7"
 dependencies = [
  "thiserror-impl",
 ]
 
 [[package]]
 name = "thiserror-impl"
-version = "1.0.43"
+version = "1.0.48"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "463fe12d7993d3b327787537ce8dd4dfa058de32fc2b195ef3cde03dc4771e8f"
+checksum = "49922ecae66cc8a249b77e68d1d0623c1b2c514f0060c27cdc68bd62a1219d35"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.26",
+ "syn 2.0.31",
 ]
 
 [[package]]
@@ -852,11 +893,10 @@ dependencies = [
 
 [[package]]
 name = "waveshare-rp2040-zero"
-version = "0.6.0"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0e36889ce533ed216200dc2e2179d1fba8f9ba432da2d69406dc2cfe1edc7e89"
+checksum = "39c3dad88a526e5ec824856f90f01fc4f6f7efec297ab7cae80d9876985dc736"
 dependencies = [
- "cortex-m",
  "cortex-m-rt",
  "rp2040-boot2",
  "rp2040-hal",
@@ -864,9 +904,9 @@ dependencies = [
 
 [[package]]
 name = "ws2812-pio"
-version = "0.6.0"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7d219e3b43c1e14305b36363060c0348d560314e235d999cf492bbbab1f38e8d"
+checksum = "7563c10c66afe0dbbf737d25974e1ace1a698090b3ff4124c2f59c18d330bb3c"
 dependencies = [
  "cortex-m",
  "embedded-hal",

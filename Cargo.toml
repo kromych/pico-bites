@@ -16,8 +16,8 @@ embedded-time = "0.12"
 usb-device = "0.2"
 usbd-serial = "0.1"
 
-rp-pico = "0.7"
-rp2040-hal = "0.8"
+rp-pico = "0.8"
+rp2040-hal = "0.9"
 
 defmt = "0.3"
 defmt-rtt = "0.4"
@@ -25,15 +25,16 @@ panic-probe = { version = "0.3", features = ["print-defmt"] }
 panic-halt = "0.2"
 
 fugit = "0.3"
+heapless = "0.7"
 
 embedded-graphics = "0.8"
 embedded-graphics-core = "0.4"
 mipidsi = "0.7"
 display-interface-spi = "0.4"
 
-waveshare-rp2040-zero = "0.6"
+waveshare-rp2040-zero = "0.7"
 smart-leds = "0.3"
-ws2812-pio = "0.6"
+ws2812-pio = "0.7"
 
 nb = "1.1"
 

@@ -44,8 +44,8 @@ fn main() -> ! {
     );
 
     let uart_pins = (
-        pins.gpio8.into_mode::<hal::gpio::FunctionUart>(),
-        pins.gpio9.into_mode::<hal::gpio::FunctionUart>(),
+        pins.gpio8.into_function::<hal::gpio::FunctionUart>(),
+        pins.gpio9.into_function::<hal::gpio::FunctionUart>(),
     );
     let mut uart = hal::uart::UartPeripheral::new(pac.UART1, uart_pins, &mut pac.RESETS)
         .enable(
