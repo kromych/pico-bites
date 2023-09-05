@@ -15,9 +15,7 @@ use core::fmt::Write;
 use heapless::String;
 use usb_device::{class_prelude::*, prelude::*};
 use usbd_serial::SerialPort;
-
-/// https://www.usb.org/defined-class-codes
-const USB_COMM_DEV_CLASS: u8 = 2;
+use usbd_serial::USB_CLASS_CDC;
 
 const USB_VENDOR_ID: u16 = 0x16c2;
 const USB_PRODUCT_ID: u16 = 0x27df;
@@ -74,7 +72,7 @@ fn main() -> ! {
         .manufacturer(USB_DEV_MANUFACTURER)
         .product(USB_DEV_PRODUCT)
         .serial_number(USB_DEV_SERIAL_NUMBER)
-        .device_class(USB_COMM_DEV_CLASS)
+        .device_class(USB_CLASS_CDC)
         .build();
 
     let mut said_hello = false;
