@@ -15,7 +15,7 @@ mod app {
     use rp2040_hal as hal;
     use rp_pico as bsp;
 
-    use embedded_hal::digital::v2::ToggleableOutputPin;
+    use embedded_hal::digital::StatefulOutputPin;
     use hal::gpio::FunctionSio;
     use hal::gpio::PullDown;
     use hal::gpio::SioOutput;

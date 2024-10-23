@@ -11,7 +11,7 @@ use defmt as log;
 use rp_pico as bsp;
 
 use bsp::hal::clocks::Clock;
-use embedded_hal::digital::v2::OutputPin;
+use embedded_hal::digital::OutputPin;
 
 #[bsp::entry]
 fn main() -> ! {

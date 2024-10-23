@@ -19,9 +19,6 @@ use usbd_serial::USB_CLASS_CDC;
 
 const USB_VENDOR_ID: u16 = 0x16c2;
 const USB_PRODUCT_ID: u16 = 0x27df;
-const USB_DEV_MANUFACTURER: &'static str = "Fake company";
-const USB_DEV_PRODUCT: &'static str = "Serial port";
-const USB_DEV_SERIAL_NUMBER: &'static str = "TEST";
 
 #[bsp::entry]
 fn main() -> ! {
@@ -69,9 +66,6 @@ fn main() -> ! {
 
     // Create a USB device with a fake VID and PID
     let mut usb_dev = UsbDeviceBuilder::new(&usb_bus, UsbVidPid(USB_VENDOR_ID, USB_PRODUCT_ID))
-        .manufacturer(USB_DEV_MANUFACTURER)
-        .product(USB_DEV_PRODUCT)
-        .serial_number(USB_DEV_SERIAL_NUMBER)
         .device_class(USB_CLASS_CDC)
         .build();
 

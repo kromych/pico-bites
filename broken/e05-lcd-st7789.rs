@@ -75,7 +75,7 @@ fn main() -> ! {
     let spi = hal::spi::Spi::<_, _, _, 8>::new(pac.SPI0, (mosi, miso, sclk));
 
     let mut display = mipidsi::Builder::with_model(
-        display_interface_spi::SPIInterfaceNoCS::new(
+        display_interface_spi::SPIInterface::new(
             spi.init(
                 &mut pac.RESETS,
                 clocks.peripheral_clock.freq(),
