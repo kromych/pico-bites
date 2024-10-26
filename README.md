@@ -34,10 +34,8 @@ The runner must be set to `probe-run` if the Pico is connected though a debug pr
 ```sh
 cargo install cargo-embed
 cargo install cargo-flash
+cargo install probe-rs-tools --locked
 cargo install flip-link
-cargo install probe-rs-cli
-cargo install probe-rs-debugger
-cargo install probe-run
 ```
 
 To debug the code on the Pico, this repo includes a Python script
